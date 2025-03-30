@@ -5,19 +5,19 @@ var __importDefault =
     return mod && mod.__esModule ? mod : { default: mod };
   };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.instance = void 0;
+exports.Client = void 0;
 const openapi_client_axios_1 = __importDefault(require("openapi-client-axios"));
 const openapi_json_1 = __importDefault(require("./openapi.json"));
-const instance = ({ token, baseURL }) => {
+const Client = ({ token, baseURL }) => {
   const api = new openapi_client_axios_1.default({
     definition: openapi_json_1.default,
     axiosConfigDefaults: {
       baseURL,
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     },
   });
   return api.initSync();
 };
-exports.instance = instance;
+exports.Client = Client;

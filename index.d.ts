@@ -1,11 +1,11 @@
-import type { Client } from "./openapi.d.ts";
+import type { Client as OpenAPIClient } from "./openapi.d.ts";
 type CreateOpenWebUIClientInstanceOptions = {
   token: string;
   baseURL: string;
 };
-export declare const instance: ({
+export declare const Client: ({
   token,
   baseURL,
-}: CreateOpenWebUIClientInstanceOptions) => Client;
+}: CreateOpenWebUIClientInstanceOptions) => OpenAPIClient;
 export {};
 //# sourceMappingURL=index.d.ts.map
