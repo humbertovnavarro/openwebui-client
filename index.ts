@@ -1,4 +1,4 @@
-import type { Client } from "./openapi.d.ts";
+import type { Client as OpenAPIClient } from "./openapi.d.ts";
 import OpenAPIClientAxios, { type Document } from "openapi-client-axios";
 import Definition from "./openapi.json";
 
@@ -7,7 +7,7 @@ type CreateOpenWebUIClientInstanceOptions = {
   baseURL: string;
 };
 
-export const instance = ({
+export const Client = ({
   token,
   baseURL,
 }: CreateOpenWebUIClientInstanceOptions) => {
@@ -16,9 +16,9 @@ export const instance = ({
     axiosConfigDefaults: {
       baseURL,
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     },
   });
-  return api.initSync<Client>();
+  return api.initSync<OpenAPIClient>();
 };
